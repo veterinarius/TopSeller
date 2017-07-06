@@ -2,6 +2,9 @@
 build/
 DerivedData/
 
+# config.txt behalten
+config.txt
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
