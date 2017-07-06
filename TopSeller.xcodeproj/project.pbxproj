@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A8FC8FD1F014A41007DB131 /* BookPagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8FC8FC1F014A41007DB131 /* BookPagerController.swift */; };
+		5A8FC8FE1F014A41007DB131 /* BookPagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8FC8FC1F014A41007DB131 /* BookPagerController.swift */; };
+		5A8FC8FF1F014A41007DB131 /* BookPagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8FC8FC1F014A41007DB131 /* BookPagerController.swift */; };
+		5A8FC9011F015700007DB131 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8FC9001F015700007DB131 /* PageCell.swift */; };
+		5A8FC9021F015700007DB131 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8FC9001F015700007DB131 /* PageCell.swift */; };
+		5A8FC9031F015700007DB131 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8FC9001F015700007DB131 /* PageCell.swift */; };
+		5AD6875F1EFD0D7600E2F0D6 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6875E1EFD0D7600E2F0D6 /* BookCell.swift */; };
 		5AE56F121EFA6B51004ACC2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE56F111EFA6B51004ACC2D /* AppDelegate.swift */; };
 		5AE56F141EFA6B51004ACC2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE56F131EFA6B51004ACC2D /* ViewController.swift */; };
-		5AE56F171EFA6B51004ACC2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE56F151EFA6B51004ACC2D /* Main.storyboard */; };
 		5AE56F1A1EFA6B51004ACC2D /* TopSeller.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AE56F181EFA6B51004ACC2D /* TopSeller.xcdatamodeld */; };
 		5AE56F1C1EFA6B51004ACC2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AE56F1B1EFA6B51004ACC2D /* Assets.xcassets */; };
 		5AE56F1F1EFA6B51004ACC2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE56F1D1EFA6B51004ACC2D /* LaunchScreen.storyboard */; };
 		5AE56F2A1EFA6B51004ACC2D /* TopSellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE56F291EFA6B51004ACC2D /* TopSellerTests.swift */; };
 		5AE56F351EFA6B51004ACC2D /* TopSellerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE56F341EFA6B51004ACC2D /* TopSellerUITests.swift */; };
+		5AE56F431EFAB3C5004ACC2D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE56F421EFAB3C5004ACC2D /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A8FC8FC1F014A41007DB131 /* BookPagerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPagerController.swift; sourceTree = "<group>"; };
+		5A8FC9001F015700007DB131 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		5AD6875E1EFD0D7600E2F0D6 /* BookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		5AE56F0E1EFA6B51004ACC2D /* TopSeller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopSeller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AE56F111EFA6B51004ACC2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AE56F131EFA6B51004ACC2D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5AE56F161EFA6B51004ACC2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5AE56F191EFA6B51004ACC2D /* TopSeller.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TopSeller.xcdatamodel; sourceTree = "<group>"; };
 		5AE56F1B1EFA6B51004ACC2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5AE56F1E1EFA6B51004ACC2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +58,7 @@
 		5AE56F301EFA6B51004ACC2D /* TopSellerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TopSellerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AE56F341EFA6B51004ACC2D /* TopSellerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSellerUITests.swift; sourceTree = "<group>"; };
 		5AE56F361EFA6B51004ACC2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5AE56F421EFAB3C5004ACC2D /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +86,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A8FC9041F015814007DB131 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5AE56F131EFA6B51004ACC2D /* ViewController.swift */,
+				5A8FC8FC1F014A41007DB131 /* BookPagerController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		5A8FC9051F015842007DB131 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5AD6875E1EFD0D7600E2F0D6 /* BookCell.swift */,
+				5AE56F421EFAB3C5004ACC2D /* Models.swift */,
+				5A8FC9001F015700007DB131 /* PageCell.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		5AE56F051EFA6B51004ACC2D = {
 			isa = PBXGroup;
 			children = (
@@ -100,11 +129,11 @@
 			isa = PBXGroup;
 			children = (
 				5AE56F111EFA6B51004ACC2D /* AppDelegate.swift */,
-				5AE56F131EFA6B51004ACC2D /* ViewController.swift */,
-				5AE56F151EFA6B51004ACC2D /* Main.storyboard */,
-				5AE56F1B1EFA6B51004ACC2D /* Assets.xcassets */,
+				5A8FC9051F015842007DB131 /* Models */,
+				5A8FC9041F015814007DB131 /* Controller */,
 				5AE56F1D1EFA6B51004ACC2D /* LaunchScreen.storyboard */,
 				5AE56F201EFA6B51004ACC2D /* Info.plist */,
+				5AE56F1B1EFA6B51004ACC2D /* Assets.xcassets */,
 				5AE56F181EFA6B51004ACC2D /* TopSeller.xcdatamodeld */,
 			);
 			path = TopSeller;
@@ -240,7 +269,6 @@
 			files = (
 				5AE56F1F1EFA6B51004ACC2D /* LaunchScreen.storyboard in Resources */,
 				5AE56F1C1EFA6B51004ACC2D /* Assets.xcassets in Resources */,
-				5AE56F171EFA6B51004ACC2D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,9 +293,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8FC8FD1F014A41007DB131 /* BookPagerController.swift in Sources */,
 				5AE56F141EFA6B51004ACC2D /* ViewController.swift in Sources */,
 				5AE56F121EFA6B51004ACC2D /* AppDelegate.swift in Sources */,
 				5AE56F1A1EFA6B51004ACC2D /* TopSeller.xcdatamodeld in Sources */,
+				5AE56F431EFAB3C5004ACC2D /* Models.swift in Sources */,
+				5AD6875F1EFD0D7600E2F0D6 /* BookCell.swift in Sources */,
+				5A8FC9011F015700007DB131 /* PageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +307,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8FC8FE1F014A41007DB131 /* BookPagerController.swift in Sources */,
 				5AE56F2A1EFA6B51004ACC2D /* TopSellerTests.swift in Sources */,
+				5A8FC9021F015700007DB131 /* PageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +317,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8FC8FF1F014A41007DB131 /* BookPagerController.swift in Sources */,
 				5AE56F351EFA6B51004ACC2D /* TopSellerUITests.swift in Sources */,
+				5A8FC9031F015700007DB131 /* PageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,14 +339,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5AE56F151EFA6B51004ACC2D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5AE56F161EFA6B51004ACC2D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5AE56F1D1EFA6B51004ACC2D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -520,6 +548,7 @@
 				5AE56F3B1EFA6B51004ACC2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5AE56F3C1EFA6B51004ACC2D /* Build configuration list for PBXNativeTarget "TopSellerTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +557,7 @@
 				5AE56F3E1EFA6B51004ACC2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5AE56F3F1EFA6B51004ACC2D /* Build configuration list for PBXNativeTarget "TopSellerUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +566,7 @@
 				5AE56F411EFA6B51004ACC2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
