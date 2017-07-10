@@ -17,6 +17,8 @@ class BookPagerController: UICollectionViewController, UICollectionViewDelegateF
         collectionView?.backgroundColor = .white
         
         navigationItem.title = self.book?.title
+        let textAttributes = [NSForegroundColorAttributeName: UIColor(red: 0.592, green: 0.004, blue: 0.031, alpha: 1.00)]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
         
         collectionView?.register(PageCell.self, forCellWithReuseIdentifier: "cellId")
         
@@ -68,16 +70,7 @@ class BookPagerController: UICollectionViewController, UICollectionViewDelegateF
             pageCell?.backgroundColor = .red
 //            navigationItem.title = "Buch Laden"
         }
-        
-/*        if indexPath.item % 2 == 0 {
-            cell.backgroundColor = .gray
-            
-        } else {
-        
-        cell.backgroundColor = .black
-            
-        } */
-        
+                
         return pageCell!
      }
 }

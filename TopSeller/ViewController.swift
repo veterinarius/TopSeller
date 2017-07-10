@@ -24,7 +24,9 @@ class ViewController: UITableViewController {
         tableView.backgroundColor = UIColor(white: 1, alpha: 0.3)
         tableView.separatorColor = UIColor(white: 1, alpha: 0.2) 
         
-        navigationItem.title = "Top Seller"
+        navigationItem.title = "Spiegel"
+        let textAttributes = [NSForegroundColorAttributeName: UIColor(red: 0.894, green: 0.275, blue: 0.149, alpha: 1.00)]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
         
         fetchBooks()
         
@@ -77,6 +79,7 @@ class ViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "menu") .withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector (handleMenuPress))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "amazon_icon") .withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAmazonPress))
+    
     }
     
     func handleMenuPress() {
@@ -99,7 +102,6 @@ class ViewController: UITableViewController {
     
     func fetchBooks() {
         print("Fetching books...")
-//        if let url = URL(string: "https://letsbuildthatapp-videos.s3-us-west-2.amazonaws.com/kindle.json") {
         if let url = URL(string: "https://articyoulate.com/images/Bestseller/BestSeller.json") {
             URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
                 
