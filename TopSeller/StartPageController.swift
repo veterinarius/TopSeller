@@ -9,83 +9,99 @@
 import UIKit
 
 
-class StartPageController: UICollectionViewController {
+class StartPageController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    private let cellId = "cellId"
+    private let largeCellId = "largeCellId"
+    
+    var distributorCategories: [DistributorCategory]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.backgroundColor = .red
         
-        let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout
-        layout?.scrollDirection = .horizontal
-        layout?.minimumLineSpacing = 0
-    
+        distributorCategories = DistributorCategory.sampleDistributorCategories()
         
+        setupNavBarButton()
         
+        navigationItem.title = "Bücher Top 10-Seller"
         
+        collectionView?.backgroundColor = UIColor.white
         
+        collectionView?.register(StartPageCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(LargeCategoryCell.self, forCellWithReuseIdentifier: largeCellId)
         
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
-
-        // Do any additional setup after loading the view.
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        collectionViewLayout.invalidateLayout()
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if indexPath.item >= 2 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: largeCellId, for: indexPath) as! LargeCategoryCell
+            
+            cell.appCategory = distributorCategories?[indexPath.item]
+            
+            return cell
+            
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! StartPageCell
+        
+        cell.appCategory = distributorCategories?[indexPath.item]
+        
+        return cell
         
     }
-
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-
-        return 1
-    }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        return 4
+        if let count = distributorCategories?.count {
+            return count
+        }
+        return 0
     }
-
-/*    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
-        // Configure the cell
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if indexPath.item >= 2 {
+            return CGSize(width: view.frame.width, height: 160)
+        }
+        return CGSize(width: view.frame.width, height: 190)
+    }
     
-        return cell*/
+    func setupNavBarButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "menu") .withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector (handleMenuPress))
+
+}
+    func handleMenuPress() {
+        print("Menu pressed.")
     }
+}
 
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+class LargeCategoryCell: StartPageCell {
     
+    fileprivate let largeAppCellId = "largeAppCellId"
+    
+    override func setupViews() {
+        super.setupViews()
+        appCollectionView.register(LargeAppCell.self, forCellWithReuseIdentifier: "largeAppCellId")
     }
-    */
-
-
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: largeAppCellId, for: indexPath) as! AppCell
+        cell.app = appCategory?.apps?[indexPath.item]
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 225, height: frame.height - 32)
+        
+    }
+    
+    private class LargeAppCell: AppCell {
+        fileprivate override func setupViews() {
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(imageView)
+            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
+            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-2-[v0]-19-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
+            
+        }
+    }
+}

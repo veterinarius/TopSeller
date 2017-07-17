@@ -26,7 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = LightStatusBarNavController(rootViewController: ViewController())
+//        window?.rootViewController = LightStatusBarNavController(rootViewController: ViewController())
+        
+        let layout = UICollectionViewFlowLayout()
+        let startPageController = StartPageController(collectionViewLayout: layout)
+        window?.rootViewController = UINavigationController(rootViewController: startPageController)
         
         return true
     }
