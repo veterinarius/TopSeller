@@ -12,6 +12,7 @@ class BookCell: UITableViewCell {
     
     var book: Book? {
         didSet {
+            thisWeekNumberTextField.text = book?.thisWeekNumber
             lastWeekNumberTextField.text = book?.lastWeekNumber
             titleLabel.text = book?.title
             authorLabel.text = book?.author
@@ -43,11 +44,13 @@ class BookCell: UITableViewCell {
         }
     }
     
-    private let numberImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .blue
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    private let thisWeekNumberTextField: UITextField = {
+        let textField = UITextField()
+        textField.textAlignment = .center
+        textField.textColor = .white
+        textField.font = UIFont.boldSystemFont(ofSize: 16)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
         
     }()
     
@@ -69,7 +72,6 @@ class BookCell: UITableViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Dies ist der Titel des Buches"
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 16)
@@ -79,7 +81,6 @@ class BookCell: UITableViewCell {
     
     private let authorLabel: UILabel = {
         let label = UILabel()
-        label.text = "This is some author for the book that we have in this row"
         label.textColor = .lightGray
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 14)
@@ -89,7 +90,6 @@ class BookCell: UITableViewCell {
     
     private let publisherLabel: UILabel = {
         let label = UILabel()
-        label.text = "(Diogenes)"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
@@ -98,7 +98,6 @@ class BookCell: UITableViewCell {
     
     private let priceTextField: UITextField = {
         let priceTextField = UITextField()
-        priceTextField.text = "19,99 €"
         priceTextField.translatesAutoresizingMaskIntoConstraints = false
         priceTextField.textColor = .red
           return priceTextField
@@ -110,11 +109,11 @@ class BookCell: UITableViewCell {
         
         backgroundColor = .clear
         
-        addSubview(numberImageView)
-        numberImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 4).isActive = true
-        numberImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
-        numberImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -43).isActive = true
-        numberImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        addSubview(thisWeekNumberTextField)
+        thisWeekNumberTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 4).isActive = true
+        thisWeekNumberTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
+        thisWeekNumberTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -43).isActive = true
+        thisWeekNumberTextField.widthAnchor.constraint(equalToConstant: 40).isActive = true
         
         addSubview(lastWeekNumberTextField)
         lastWeekNumberTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 4).isActive = true
@@ -123,7 +122,7 @@ class BookCell: UITableViewCell {
         lastWeekNumberTextField.widthAnchor.constraint(equalToConstant: 40).isActive = true
         
         addSubview(coverImageView)
-        coverImageView.leftAnchor.constraint(equalTo: numberImageView.rightAnchor, constant: 4).isActive = true
+        coverImageView.leftAnchor.constraint(equalTo: thisWeekNumberTextField.rightAnchor, constant: 4).isActive = true
         coverImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
         coverImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
         coverImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
@@ -133,18 +132,15 @@ class BookCell: UITableViewCell {
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-//        titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -10).isActive = true
         
         addSubview(authorLabel)
         authorLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4).isActive = true
         authorLabel.leftAnchor.constraint(equalTo: coverImageView.rightAnchor, constant: 8).isActive = true
-//        authorLabel.rightAnchor.constraint(equalTo: publisherLabel.leftAnchor, constant: -8).isActive = true
         authorLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         addSubview(publisherLabel)
         publisherLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4).isActive = true
         publisherLabel.leftAnchor.constraint(equalTo: authorLabel.rightAnchor, constant: 8).isActive = true
-//        publisherLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
         publisherLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         addSubview(priceTextField)

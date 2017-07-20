@@ -9,7 +9,7 @@
 import UIKit
   
 class Book {
-    let number: String
+    let thisWeekNumber: String
     let lastWeekNumber: String
     let title: String
     let author: String
@@ -19,7 +19,7 @@ class Book {
     let coverImageUrl: String
 
     init(dictionary: [String: Any]) {
-        self.number = dictionary["number"] as? String ?? ""
+        self.thisWeekNumber = dictionary["thisWeekNumber"] as? String ?? ""
         self.lastWeekNumber = dictionary["lastWeekNumber"] as? String ?? ""
         self.title = dictionary["title"] as? String ?? ""
         self.author = dictionary["author"] as? String ?? ""
