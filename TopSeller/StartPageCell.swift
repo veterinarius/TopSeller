@@ -13,7 +13,10 @@ class StartPageCell: UICollectionViewCell, UICollectionViewDataSource, UICollect
     var appCategory: DistributorCategory? {
         didSet {
             if let name = appCategory?.name {
-                nameLabel.text = name            }
+                nameLabel.text = name
+            }
+            
+            appCollectionView.reloadData()
         }
     }
     
@@ -30,6 +33,7 @@ class StartPageCell: UICollectionViewCell, UICollectionViewDataSource, UICollect
     
     let nameLabel: UILabel = {
         let label = UILabel()
+        label.text = "Bücher Neuheiten"
         label.font = UIFont.systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false 
         return label

@@ -13,6 +13,7 @@ class StartPageController: UICollectionViewController, UICollectionViewDelegateF
     
     private let cellId = "cellId"
     private let largeCellId = "largeCellId"
+    private let headerId = "headerId"
     
     var distributorCategories: [DistributorCategory]?
 
@@ -29,6 +30,7 @@ class StartPageController: UICollectionViewController, UICollectionViewDelegateF
         
         collectionView?.register(StartPageCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(LargeCategoryCell.self, forCellWithReuseIdentifier: largeCellId)
+        collectionView?.register(Header.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
     }
     
@@ -73,7 +75,61 @@ class StartPageController: UICollectionViewController, UICollectionViewDelegateF
     func handleMenuPress() {
         print("Menu pressed.")
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: 150)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! Header
+        header.appCategory = distributorCategories?.first
+        
+        return header
+    }
 }
+
+class Header: StartPageCell {
+    
+    let cellId = "bannerCellId"
+    
+    override func setupViews() {
+        
+        appCollectionView.dataSource = self
+        appCollectionView.delegate = self
+        
+        appCollectionView.register(BannerCell.self, forCellWithReuseIdentifier: cellId)
+        
+        addSubview(appCollectionView)
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appCollectionView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appCollectionView]))
+
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppCell
+        cell.app = appCategory?.apps?[indexPath.item]
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 225, height: frame.height - 32)
+        
+    }
+    
+    private class BannerCell: AppCell {
+        fileprivate override func setupViews() {
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(imageView)
+            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
+            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
+            
+        }
+    }
+ }
 
 class LargeCategoryCell: StartPageCell {
     
