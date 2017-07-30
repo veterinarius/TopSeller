@@ -8,6 +8,30 @@
 
 import UIKit
 
+class TopNew: NSObject {
+    
+    var bannerCategory: DistributorCategory?
+    var appCategories: [DistributorCategory]?
+    
+    override func setValue(_ value: Any?, forKey key: String) {
+        if key == "categories" {
+            appCategories = [DistributorCategory]()
+            
+            for dict in value as! [[String: AnyObject]] {
+                let appCategory = DistributorCategory()
+                appCategory.setValuesForKeys(dict)
+                appCategories?.append(appCategory)
+            }
+            
+        } else if key == "bannerCategory" {
+            bannerCategory = DistributorCategory()
+            bannerCategory?.setValuesForKeys(value as! [String: AnyObject])
+        } else {
+            super.setValue(value, forKey: key)
+        }
+    }
+}
+
 class DistributorCategory: NSObject {
     
     var name: String?
