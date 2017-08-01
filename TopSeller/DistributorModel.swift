@@ -13,7 +13,7 @@ class TopNew: NSObject {
     var bannerCategory: DistributorCategory?
     var appCategories: [DistributorCategory]?
     
-/*    override func setValue(_ value: Any?, forKey key: String) {
+    override func setValue(_ value: Any?, forKey key: String) {
         if key == "categories" {
             appCategories = [DistributorCategory]()
             
@@ -21,6 +21,7 @@ class TopNew: NSObject {
                 let appCategory = DistributorCategory()
                 appCategory.setValuesForKeys(dict)
                 appCategories?.append(appCategory)
+        
             }
             
         } else if key == "bannerCategory" {
@@ -29,7 +30,7 @@ class TopNew: NSObject {
         } else {
             super.setValue(value, forKey: key)
         }
-    } */
+    } 
 }
 
 class DistributorCategory: NSObject {
@@ -201,5 +202,6 @@ class App: NSObject {
     var name: String?
     var category: String?
     var imageName: String?
+    
     
 }

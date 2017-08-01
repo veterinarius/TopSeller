@@ -16,13 +16,19 @@ class StartPageController: UICollectionViewController, UICollectionViewDelegateF
     private let headerId = "headerId"
     
     var newApps: TopNew?
-    var distributorCategories: [DistributorCategory]?
+    var appCategories: [DistributorCategory]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        distributorCategories = DistributorCategory.sampleDistributorCategories()
+        DistributorCategory.fetchTopNew { (newApps) in
+            self.newApps = newApps
+            self.appCategories = newApps.appCategories
+            self.collectionView?.reloadData()
+            
+            self.appCategories = DistributorCategory.sampleDistributorCategories()
         
+        }
         setupNavBarButton()
         
         navigationItem.title = "Bücher Top 10-Seller"
@@ -40,7 +46,7 @@ class StartPageController: UICollectionViewController, UICollectionViewDelegateF
         if indexPath.item >= 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: largeCellId, for: indexPath) as! LargeCategoryCell
             
-            cell.appCategory = distributorCategories?[indexPath.item]
+            cell.appCategory = appCategories?[indexPath.item]
             
             return cell
             
@@ -48,14 +54,14 @@ class StartPageController: UICollectionViewController, UICollectionViewDelegateF
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! StartPageCell
         
-        cell.appCategory = distributorCategories?[indexPath.item]
+        cell.appCategory = appCategories?[indexPath.item]
         
         return cell
         
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let count = distributorCategories?.count {
+        if let count = appCategories?.count {
             return count
         }
         return 0
@@ -83,7 +89,7 @@ class StartPageController: UICollectionViewController, UICollectionViewDelegateF
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! Header
-        header.appCategory = distributorCategories?.first
+        header.appCategory = newApps?.bannerCategory
         
         return header
     }
