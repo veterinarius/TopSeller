@@ -13,7 +13,7 @@ class TopNew: NSObject {
     var bannerCategory: DistributorCategory?
     var appCategories: [DistributorCategory]?
     
-    override func setValue(_ value: Any?, forKey key: String) {
+/*    override func setValue(_ value: Any?, forKey key: String) {
         if key == "categories" {
             appCategories = [DistributorCategory]()
             
@@ -29,24 +29,66 @@ class TopNew: NSObject {
         } else {
             super.setValue(value, forKey: key)
         }
-    }
+    } */
 }
 
 class DistributorCategory: NSObject {
     
     var name: String?
-    var apps: [Distributor]?
+    var apps: [App]?
     var type: String?
+    
+    override func setValue(_ value: Any?, forKey key: String) {
+        if key == "apps" {
+            
+            apps = [App]()
+            for dict in value as! [[String: AnyObject]] {
+                let app = App()
+                app.setValuesForKeys(dict)
+                apps?.append(app)
+                }
+            } else {
+                super.setValue(value, forKey: key)
+            }
+        }
+    
+        static func fetchTopNew(completionHandler: @escaping (TopNew) -> ()) {
+            
+            let urlString = "https://articyoulate.com/images/Bestseller/TopNeueinsteiger.json"
+            
+            URLSession.shared.dataTask(with: URL(string: urlString)!, completionHandler: { (data, response, error) -> Void in
+                
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                
+                do {
+                    let json = try(JSONSerialization.jsonObject(with: data!, options: .mutableContainers))
+                    
+                    let newApps = TopNew()
+                    
+                    newApps.setValuesForKeys(json as! [String: AnyObject])
+                    
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        completionHandler(newApps)
+                    })
+                } catch let err {
+                    print(err)
+                }
+                
+            }) .resume()
+        }
     
     static func sampleDistributorCategories() -> [DistributorCategory] {
     
     let spiegelCategory = DistributorCategory()
     spiegelCategory.name = "Spiegel"
     
-    var apps = [Distributor]()
+    var apps = [App]()
     
     // logic
-    let spiegelApp = Distributor()
+    let spiegelApp = App()
     spiegelApp.name = "Literatur Spiegel"
     spiegelApp.imageName = "Spiegel-1-1-1"
     spiegelApp.category = ""
@@ -54,13 +96,13 @@ class DistributorCategory: NSObject {
         
     spiegelCategory.apps = apps
         
-        let spiegel1App = Distributor()
+        let spiegel1App = App()
 //        spiegel1App.name = ""
         spiegel1App.imageName = "Spiegel-1-1-2"
 //        spiegel1App.category = ""
         apps.append(spiegel1App)
         
-        let spiegel2App = Distributor()
+        let spiegel2App = App()
 //        spiegel2App.name = ""
         spiegel2App.imageName = "Spiegel-2-1-1"
 //        spiegel2App.category = ""
@@ -68,7 +110,7 @@ class DistributorCategory: NSObject {
         
         spiegelCategory.apps = apps
         
-        let spiegel3App = Distributor()
+        let spiegel3App = App()
 //        spiegel3App.name = ""
         spiegel3App.imageName = "Spiegel-2-1-2"
 //        spiegel3App.category = ""
@@ -76,7 +118,7 @@ class DistributorCategory: NSObject {
         
         spiegelCategory.apps = apps
         
-        let spiegel4App = Distributor()
+        let spiegel4App = App()
 //        spiegel4App.name = ""
         spiegel4App.imageName = "spiegel-online-3-1-1"
 //        spiegel4App.category = ""
@@ -84,7 +126,7 @@ class DistributorCategory: NSObject {
         
         spiegelCategory.apps = apps
         
-        let spiegel5App = Distributor()
+        let spiegel5App = App()
 //        spiegel5App.name = ""
         spiegel5App.imageName = "spiegel-online-3-1-2"
 //        spiegel5App.category = ""
@@ -96,9 +138,9 @@ class DistributorCategory: NSObject {
     let amazonCategory = DistributorCategory()
     amazonCategory.name = "amazon"
         
-    var amazonApps = [Distributor]()
+    var amazonApps = [App]()
         
-    let amazonApp = Distributor()
+    let amazonApp = App()
     amazonApp.name = "amazon.de"
 //    amazonApp.category = ""
     amazonApp.imageName = "amazon-1"
@@ -109,9 +151,9 @@ class DistributorCategory: NSObject {
     let focusCategory = DistributorCategory()
     focusCategory.name = "Focus"
         
-    var focusApps = [Distributor]()
+    var focusApps = [App]()
         
-    let focusApp = Distributor()
+    let focusApp = App()
     focusApp.name = "Focus"
     focusApp.imageName = "focus-6-1-1"
 //    focusApp.category = "Bücher-Bestseller"
@@ -119,7 +161,7 @@ class DistributorCategory: NSObject {
         
     focusCategory.apps = focusApps
         
-        let focus1App = Distributor()
+        let focus1App = App()
         focus1App.name = "Thalia"
         focus1App.imageName = "focus-6-1-2"
 //        focus1App.category = "Belletristik/Sachbuch"
@@ -130,9 +172,9 @@ class DistributorCategory: NSObject {
         let thaliaCategory = DistributorCategory()
         thaliaCategory.name = "Thalia"
         
-        var thaliaApps = [Distributor]()
+        var thaliaApps = [App]()
         
-        let thaliaApp = Distributor()
+        let thaliaApp = App()
         thaliaApp.name = "Thalia"
         thaliaApp.imageName = "thalia-4-1-1"
 //        thaliaApp.category = ""
@@ -140,7 +182,7 @@ class DistributorCategory: NSObject {
         
         thaliaCategory.apps = thaliaApps
         
-        let thalia1App = Distributor()
+        let thalia1App = App()
         thalia1App.name = "Thalia"
         thalia1App.imageName = "thalia-4-1-2"
 //        thalia1App.category = ""
@@ -153,7 +195,7 @@ class DistributorCategory: NSObject {
     }
 }
 
-class Distributor: NSObject {
+class App: NSObject {
     
     var id: NSNumber?
     var name: String?

@@ -99,7 +99,7 @@ class StartPageCell: UICollectionViewCell, UICollectionViewDataSource, UICollect
 
 class AppCell: UICollectionViewCell {
     
-    var app: Distributor? {
+    var app: App? {
         didSet {
             if let name = app?.name {
                 nameLabel.text = name

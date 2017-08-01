@@ -15,6 +15,7 @@ class StartPageController: UICollectionViewController, UICollectionViewDelegateF
     private let largeCellId = "largeCellId"
     private let headerId = "headerId"
     
+    var newApps: TopNew?
     var distributorCategories: [DistributorCategory]?
 
     override func viewDidLoad() {
