@@ -33,7 +33,6 @@ class StartPageCell: UICollectionViewCell, UICollectionViewDataSource, UICollect
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Bücher Neuheiten"
         label.font = UIFont.systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false 
         return label
@@ -124,7 +123,6 @@ class AppCell: UICollectionViewCell {
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
-        iv.layer.cornerRadius = 16
         iv.layer.masksToBounds = true
         return iv
         
@@ -139,6 +137,7 @@ class AppCell: UICollectionViewCell {
 
     let categoryLabel: UILabel = {
         let label = UILabel()
+        label.text = "Neueinsteiger"
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.darkGray
         return label

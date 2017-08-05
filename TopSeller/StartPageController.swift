@@ -108,7 +108,7 @@ class Header: StartPageCell {
         
         addSubview(appCollectionView)
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appCollectionView]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appCollectionView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]-19-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appCollectionView]))
 
     }
     
@@ -128,15 +128,23 @@ class Header: StartPageCell {
     }
     
     private class BannerCell: AppCell {
+        
         fileprivate override func setupViews() {
-            imageView.translatesAutoresizingMaskIntoConstraints = false
             addSubview(imageView)
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
+            
+            imageView.layer.borderColor = UIColor(white: 0.5, alpha: 0.5).cgColor
+            imageView.layer.borderWidth = 0.5
+            imageView.layer.cornerRadius = 0
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            
+            imageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
+            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
+            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -6).isActive = true
+            imageView.widthAnchor.constraint(equalToConstant: 55).isActive = true
             
         }
     }
- }
+}
 
 class LargeCategoryCell: StartPageCell {
     
@@ -157,7 +165,7 @@ class LargeCategoryCell: StartPageCell {
         return CGSize(width: 225, height: frame.height - 32)
         
     }
-    
+}
     private class LargeAppCell: AppCell {
         fileprivate override func setupViews() {
             imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -167,4 +175,4 @@ class LargeCategoryCell: StartPageCell {
             
         }
     }
-}
+

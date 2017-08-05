@@ -77,10 +77,9 @@ class DistributorCategory: NSObject {
                 } catch let err {
                     print(err)
                 }
-                
             }) .resume()
         }
-    
+
     static func sampleDistributorCategories() -> [DistributorCategory] {
     
     let spiegelCategory = DistributorCategory()
