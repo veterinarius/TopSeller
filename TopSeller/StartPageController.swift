@@ -100,6 +100,20 @@ class Header: StartPageCell {
     let cellId = "bannerCellId"
     
     override func setupViews() {
+        let categoryLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Neueinsteiger der Woche"
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = UIColor.black
+        return label
+    }()
+        
+        addSubview(categoryLabel)
+        categoryLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        categoryLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
+        categoryLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 2).isActive = true
+        categoryLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         
         appCollectionView.dataSource = self
         appCollectionView.delegate = self
@@ -109,7 +123,7 @@ class Header: StartPageCell {
         addSubview(appCollectionView)
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appCollectionView]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]-19-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appCollectionView]))
-
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -130,16 +144,14 @@ class Header: StartPageCell {
     private class BannerCell: AppCell {
         
         fileprivate override func setupViews() {
-            addSubview(imageView)
             
-            imageView.layer.borderColor = UIColor(white: 0.5, alpha: 0.5).cgColor
-            imageView.layer.borderWidth = 0.5
-            imageView.layer.cornerRadius = 0
+            
+            addSubview(imageView)
             imageView.translatesAutoresizingMaskIntoConstraints = false
             
             imageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
-            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -6).isActive = true
+            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 6).isActive = true
+            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4).isActive = true
             imageView.widthAnchor.constraint(equalToConstant: 55).isActive = true
             
         }

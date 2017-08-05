@@ -137,7 +137,6 @@ class AppCell: UICollectionViewCell {
 
     let categoryLabel: UILabel = {
         let label = UILabel()
-        label.text = "Neueinsteiger"
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.darkGray
         return label
