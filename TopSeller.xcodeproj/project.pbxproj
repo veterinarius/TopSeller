@@ -15,6 +15,9 @@
 		5A8FC9031F015700007DB131 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8FC9001F015700007DB131 /* PageCell.swift */; };
 		5AB5FFA51F13CCAC00F2AA10 /* StartPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5FFA41F13CCAC00F2AA10 /* StartPageController.swift */; };
 		5AB5FFA71F13D13D00F2AA10 /* StartPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB5FFA61F13D13D00F2AA10 /* StartPageCell.swift */; };
+		5AC1C4161F3776AA001A7CE8 /* DistributorDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC1C4151F3776AA001A7CE8 /* DistributorDetailController.swift */; };
+		5AC1C4171F3776AA001A7CE8 /* DistributorDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC1C4151F3776AA001A7CE8 /* DistributorDetailController.swift */; };
+		5AC1C4181F3776AA001A7CE8 /* DistributorDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC1C4151F3776AA001A7CE8 /* DistributorDetailController.swift */; };
 		5AD6875F1EFD0D7600E2F0D6 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6875E1EFD0D7600E2F0D6 /* BookCell.swift */; };
 		5AD717421F154F1B0012FF5C /* DistributorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD717411F154F1B0012FF5C /* DistributorModel.swift */; };
 		5AE56F121EFA6B51004ACC2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE56F111EFA6B51004ACC2D /* AppDelegate.swift */; };
@@ -49,6 +52,7 @@
 		5A8FC9001F015700007DB131 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		5AB5FFA41F13CCAC00F2AA10 /* StartPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageController.swift; sourceTree = "<group>"; };
 		5AB5FFA61F13D13D00F2AA10 /* StartPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageCell.swift; sourceTree = "<group>"; };
+		5AC1C4151F3776AA001A7CE8 /* DistributorDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistributorDetailController.swift; sourceTree = "<group>"; };
 		5AD6875E1EFD0D7600E2F0D6 /* BookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		5AD717411F154F1B0012FF5C /* DistributorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistributorModel.swift; sourceTree = "<group>"; };
 		5AE56F0E1EFA6B51004ACC2D /* TopSeller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopSeller.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,8 +99,9 @@
 		5A8FC9041F015814007DB131 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5AE56F131EFA6B51004ACC2D /* ViewController.swift */,
 				5A8FC8FC1F014A41007DB131 /* BookPagerController.swift */,
+				5AC1C4151F3776AA001A7CE8 /* DistributorDetailController.swift */,
+				5AE56F131EFA6B51004ACC2D /* ViewController.swift */,
 				5AB5FFA41F13CCAC00F2AA10 /* StartPageController.swift */,
 			);
 			name = Controller;
@@ -308,6 +313,7 @@
 				5AD717421F154F1B0012FF5C /* DistributorModel.swift in Sources */,
 				5AE56F121EFA6B51004ACC2D /* AppDelegate.swift in Sources */,
 				5AB5FFA51F13CCAC00F2AA10 /* StartPageController.swift in Sources */,
+				5AC1C4161F3776AA001A7CE8 /* DistributorDetailController.swift in Sources */,
 				5AE56F1A1EFA6B51004ACC2D /* TopSeller.xcdatamodeld in Sources */,
 				5AE56F431EFAB3C5004ACC2D /* Models.swift in Sources */,
 				5AD6875F1EFD0D7600E2F0D6 /* BookCell.swift in Sources */,
@@ -321,6 +327,7 @@
 			files = (
 				5A8FC8FE1F014A41007DB131 /* BookPagerController.swift in Sources */,
 				5AE56F2A1EFA6B51004ACC2D /* TopSellerTests.swift in Sources */,
+				5AC1C4171F3776AA001A7CE8 /* DistributorDetailController.swift in Sources */,
 				5A8FC9021F015700007DB131 /* PageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +338,7 @@
 			files = (
 				5A8FC8FF1F014A41007DB131 /* BookPagerController.swift in Sources */,
 				5AE56F351EFA6B51004ACC2D /* TopSellerUITests.swift in Sources */,
+				5AC1C4181F3776AA001A7CE8 /* DistributorDetailController.swift in Sources */,
 				5A8FC9031F015700007DB131 /* PageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

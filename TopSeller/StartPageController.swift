@@ -42,7 +42,8 @@ class StartPageController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     func showAppDetailForApp(app: App) {
-        let appDetailController = UIViewController()
+        let layout = UICollectionViewLayout()
+        let appDetailController = DistributorDetailController(collectionViewLayout: layout)
         navigationController?.pushViewController(appDetailController, animated: true)
     
     }
