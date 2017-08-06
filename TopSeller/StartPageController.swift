@@ -41,12 +41,19 @@ class StartPageController: UICollectionViewController, UICollectionViewDelegateF
         
     }
     
+    func showAppDetailForApp(app: App) {
+        let appDetailController = UIViewController()
+        navigationController?.pushViewController(appDetailController, animated: true)
+    
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.item >= 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: largeCellId, for: indexPath) as! LargeCategoryCell
             
             cell.appCategory = appCategories?[indexPath.item]
+            cell.featuredAppsController = self
             
             return cell
             
@@ -55,6 +62,7 @@ class StartPageController: UICollectionViewController, UICollectionViewDelegateF
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! StartPageCell
         
         cell.appCategory = appCategories?[indexPath.item]
+        cell.featuredAppsController = self
         
         return cell
         
