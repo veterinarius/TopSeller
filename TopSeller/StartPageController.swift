@@ -9,7 +9,7 @@
 import UIKit
 
 
-class StartPageController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class StartPageController: UICollectionViewController, UICollectionViewDelegateFlowLayout{
     
     private let cellId = "cellId"
     private let largeCellId = "largeCellId"
@@ -31,7 +31,7 @@ class StartPageController: UICollectionViewController, UICollectionViewDelegateF
         }
         setupNavBarButton()
         
-        navigationItem.title = "Bücher Top 10-Seller"
+        navigationItem.title = "Top-Seller Bücher"
         
         collectionView?.backgroundColor = UIColor.white
         
@@ -42,8 +42,9 @@ class StartPageController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     func showAppDetailForApp(app: App) {
-        let layout = UICollectionViewLayout()
+        let layout = UICollectionViewFlowLayout()
         let appDetailController = DistributorDetailController(collectionViewLayout: layout)
+        appDetailController.app = app
         navigationController?.pushViewController(appDetailController, animated: true)
     
     }
@@ -183,7 +184,7 @@ class LargeCategoryCell: StartPageCell {
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 225, height: frame.height - 32)
+        return CGSize(width: 237, height: frame.height - 32)
         
     }
 }
@@ -192,7 +193,7 @@ class LargeCategoryCell: StartPageCell {
             imageView.translatesAutoresizingMaskIntoConstraints = false
             addSubview(imageView)
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-2-[v0]-19-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
+            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-2-[v0]-25-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
             
         }
     }

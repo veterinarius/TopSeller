@@ -89,7 +89,7 @@ class DistributorCategory: NSObject {
     
     // logic
     let spiegelApp = App()
-    spiegelApp.name = "Literatur Spiegel"
+//    spiegelApp.name = "Literatur Spiegel"
     spiegelApp.imageName = "Spiegel-1-1-1"
     spiegelApp.category = ""
     apps.append(spiegelApp)
@@ -141,7 +141,7 @@ class DistributorCategory: NSObject {
     var amazonApps = [App]()
         
     let amazonApp = App()
-    amazonApp.name = "amazon.de"
+//    amazonApp.name = "amazon.de"
 //    amazonApp.category = ""
     amazonApp.imageName = "amazon-1"
     amazonApps.append(amazonApp)
@@ -154,7 +154,7 @@ class DistributorCategory: NSObject {
     var focusApps = [App]()
         
     let focusApp = App()
-    focusApp.name = "Focus"
+//    focusApp.name = "Focus"
     focusApp.imageName = "focus-6-1-1"
 //    focusApp.category = "Bücher-Bestseller"
     focusApps.append(focusApp)
@@ -162,7 +162,7 @@ class DistributorCategory: NSObject {
     focusCategory.apps = focusApps
         
         let focus1App = App()
-        focus1App.name = "Thalia"
+//        focus1App.name = "Thalia"
         focus1App.imageName = "focus-6-1-2"
 //        focus1App.category = "Belletristik/Sachbuch"
         focusApps.append(focus1App)
@@ -175,7 +175,7 @@ class DistributorCategory: NSObject {
         var thaliaApps = [App]()
         
         let thaliaApp = App()
-        thaliaApp.name = "Thalia"
+//        thaliaApp.name = "Thalia"
         thaliaApp.imageName = "thalia-4-1-1"
 //        thaliaApp.category = ""
         thaliaApps.append(thaliaApp)
@@ -183,7 +183,7 @@ class DistributorCategory: NSObject {
         thaliaCategory.apps = thaliaApps
         
         let thalia1App = App()
-        thalia1App.name = "Thalia"
+//        thalia1App.name = "Thalia"
         thalia1App.imageName = "thalia-4-1-2"
 //        thalia1App.category = ""
         thaliaApps.append(thalia1App)
@@ -201,6 +201,18 @@ class App: NSObject {
     var name: String?
     var category: String?
     var imageName: String?
+    var price: NSNumber?
     
+    var screenshots: [String]?
+    var desc: String?
+    var appInformation: AnyObject?
     
+    override func setValue(_ value: Any?, forKey key: String) {
+        if key == "description" {
+            self.desc = value as? String
+        } else {
+            super.setValue(value, forKey: key)
+        }
+    }
+
 }
