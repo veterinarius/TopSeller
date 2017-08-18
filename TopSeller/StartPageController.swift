@@ -21,6 +21,7 @@ class StartPageController: UICollectionViewController, UICollectionViewDelegateF
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         DistributorCategory.fetchTopNew { (newApps) in
             self.newApps = newApps
             self.appCategories = newApps.appCategories

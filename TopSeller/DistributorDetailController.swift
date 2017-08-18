@@ -18,6 +18,7 @@ class DistributorDetailController: UICollectionViewController, UICollectionViewD
             }
             
             if let id = app?.id {
+            
                 let urlString = "http://www.statsallday.com/appstore/appdetail?id=\(id)"
                 
                 URLSession.shared.dataTask(with: URL(string: urlString)!, completionHandler: { (data, response, error) -> Void in
@@ -45,14 +46,13 @@ class DistributorDetailController: UICollectionViewController, UICollectionViewD
                     }
                     
                     }).resume()
-
-
             }
-         }
+        }
     }
     
     private let headerId = "headerId"
     private let cellId = "cellId"
+    private let descriptionCellId = "descriptionCellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,11 +61,19 @@ class DistributorDetailController: UICollectionViewController, UICollectionViewD
         collectionView?.backgroundColor = UIColor.white
         
         collectionView?.register(DistributorDetailHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
-        
         collectionView?.register(ScreenshotCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(DistributorDetailDescriptionCell.self, forCellWithReuseIdentifier: descriptionCellId)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if indexPath.item == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptionCellId, for: indexPath) as! DistributorDetailDescriptionCell
+            
+            cell.textView.attributedText = descriptionAttributedText()
+            
+            return cell
+        }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ScreenshotCell
         
@@ -74,12 +82,39 @@ class DistributorDetailController: UICollectionViewController, UICollectionViewD
         return cell
     }
     
+    private func descriptionAttributedText() -> NSAttributedString {
+        let attributedText = NSMutableAttributedString(string: "Beschreibung\n", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)])
+        
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 10
+        
+        let range = NSMakeRange(0, attributedText.string.characters.count)
+        attributedText.addAttribute(NSParagraphStyleAttributeName, value: style, range: range)
+        
+        if let desc = app?.desc {
+            attributedText.append(NSAttributedString(string: desc, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 11), NSForegroundColorAttributeName: UIColor.darkGray]))
+        }
+        
+        return attributedText
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        
+        if indexPath.item == 1 {
+            
+            let dummySize = CGSize(width: view.frame.width - 8 - 8, height: 1000)
+            let options = NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin)
+            let rect = descriptionAttributedText().boundingRect(with: dummySize, options: options, context: nil)
+            
+            return CGSize(width: view.frame.width, height: rect.height + 30)
+        }
+
+        return CGSize(width: view.frame.width, height: 170)
     }
     
     override func collectionView(_ collectionView: UICollectionView,  viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
@@ -93,13 +128,41 @@ class DistributorDetailController: UICollectionViewController, UICollectionViewD
     }
 }
 
+class DistributorDetailDescriptionCell: BaseCell {
+    
+    let textView: UITextView = {
+        let tv = UITextView()
+        tv.text = "Beispieltext"
+        return tv
+
+    }()
+    
+    let dividerLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.4, alpha: 0.4)
+        return view
+        
+    }()
+    
+    override func setupViews() {
+        super.setupViews()
+        
+        addSubview(textView)
+        addSubview(dividerLineView)
+        
+        addConstraintsWithFormat("H:|-8-[v0]-8-|", views: textView)
+        addConstraintsWithFormat("H:|-14-[v0]|", views: dividerLineView)
+        
+        addConstraintsWithFormat("V:|-4-[v0]-4-[v1(1)]|", views: textView, dividerLineView)
+    }
+}
+
 class DistributorDetailHeader: BaseCell {
     
     var app: App? {
         didSet {
             if let imageName = app?.imageName {
                 imageView.image = UIImage(named: imageName)
-
             }
             
             nameLabel.text = app?.name
@@ -188,12 +251,11 @@ extension UIView {
         
           addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
     }
-
 }
 
 class BaseCell: UICollectionViewCell {
     
-    override init(frame: CGRect) {
+      override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
 
